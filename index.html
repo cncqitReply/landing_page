@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Evento</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg: #f4f7f4;
+      --ink: #111c13;
+      --accent: #00a651;
+      --muted: #5a6e5c;
+      --card: #fff;
+      --border: rgba(0,0,0,0.08);
+    }
+
+    body {
+      background: var(--bg);
+      color: var(--ink);
+      font-family: 'DM Sans', sans-serif;
+      min-height: 100vh;
+    }
+
+    /* ── Hero ── */
+    .hero {
+      max-width: 760px;
+      margin: 0 auto;
+      padding: 4rem 1.5rem 3.5rem;
+    }
+
+    .badge {
+      display: inline-block;
+      background: var(--accent);
+      color: #fff;
+      font-size: 0.68rem;
+      font-weight: 500;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      padding: 0.35rem 1rem;
+      border-radius: 2rem;
+      margin-bottom: 1.75rem;
+    }
+
+    .hero h1 {
+      font-family: 'DM Serif Display', serif;
+      font-size: clamp(2.2rem, 6vw, 3.6rem);
+      line-height: 1.12;
+      margin-bottom: 1.25rem;
+      max-width: 600px;
+    }
+
+    .hero-body {
+      display: grid;
+      grid-template-columns: 1fr auto;
+      align-items: end;
+      gap: 2rem;
+    }
+
+    .hero p {
+      color: var(--muted);
+      font-size: 1rem;
+      line-height: 1.75;
+      max-width: 480px;
+    }
+
+    .info-stack {
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+      flex-shrink: 0;
+    }
+
+    .info-chip {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 2rem;
+      padding: 0.4rem 1rem;
+      font-size: 0.82rem;
+      white-space: nowrap;
+      display: flex;
+      align-items: center;
+      gap: 0.45rem;
+    }
+
+    @media (max-width: 560px) {
+      .hero-body { grid-template-columns: 1fr; }
+      .info-stack { flex-direction: row; flex-wrap: wrap; }
+    }
+
+    /* ── Divider ── */
+    hr {
+      border: none;
+      border-top: 1px solid var(--border);
+    }
+
+    /* ── Topics ── */
+    .section {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 3rem 1.5rem 5rem;
+    }
+
+    .section-eyebrow {
+      font-size: 0.68rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 0.5rem;
+    }
+
+    .section h2 {
+      font-family: 'DM Serif Display', serif;
+      font-size: clamp(1.6rem, 4vw, 2.2rem);
+      margin-bottom: 2.5rem;
+    }
+
+    .topics-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 1.25rem;
+    }
+
+    .topic-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 1.25rem;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .topic-photo {
+      width: 100%;
+      aspect-ratio: 16 / 9;
+      background: #ddeedd;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+      position: relative;
+    }
+
+    .topic-photo img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    .topic-photo .placeholder-label {
+      font-size: 0.68rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--muted);
+    }
+
+    .topic-body {
+      padding: 1.5rem 1.5rem 1.75rem;
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+    }
+
+    .topic-tag {
+      font-size: 0.65rem;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--accent);
+      font-weight: 500;
+    }
+
+    .topic-title {
+      font-family: 'DM Serif Display', serif;
+      font-size: 1.2rem;
+      line-height: 1.25;
+      color: var(--ink);
+    }
+
+    .topic-desc {
+      font-size: 0.875rem;
+      color: var(--muted);
+      line-height: 1.7;
+      margin-top: 0.35rem;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ── HERO ─────────────────────────────────────────────────── -->
+  <div class="hero">
+    <img src="reply-logo.png" alt="Reply" style="height: 48px; margin-bottom: 2rem; display: block;" />
+    <h1>What we do</h1>
+  </div>
+
+  <hr />
+
+  <!-- ── TOPICS ─────────────────────────────────────────────────── -->
+  <div class="section">
+    <p class="section-eyebrow">What we do</p>
+    <h2>Our areas of expertise</h2>
+
+    <div class="topics-grid">
+
+      <div class="topic-card">
+        <div class="topic-photo">
+          <!-- PERSONALIZZA: sostituisci con <img src="foto.jpg" alt="..."> -->
+          <span class="placeholder-label">Photo</span>
+        </div>
+        <div class="topic-body">
+          <span class="topic-tag">Logistics &amp; Manufacturing</span>
+          <div class="topic-title">End to end flows &amp; virtual commissioning test</div>
+          <p class="topic-desc">
+            We model complete production and logistics flows to identify bottlenecks
+            before go-live. Virtual commissioning lets teams test and validate control
+            logic in a safe digital environment, reducing time-to-market and on-site risk.
+          </p>
+        </div>
+      </div>
+
+      <div class="topic-card">
+        <div class="topic-photo">
+          <span class="placeholder-label">Photo</span>
+        </div>
+        <div class="topic-body">
+          <span class="topic-tag">Simulation</span>
+          <div class="topic-title">Digital twin for model &amp; scenario verification</div>
+          <p class="topic-desc">
+            High-fidelity digital twins mirror real assets in real time, enabling
+            continuous scenario analysis and what-if testing. From plant layout
+            to system behavior, simulation drives faster and more confident decisions.
+          </p>
+        </div>
+      </div>
+
+      <div class="topic-card">
+        <div class="topic-photo">
+          <span class="placeholder-label">Photo</span>
+        </div>
+        <div class="topic-body">
+          <span class="topic-tag">Robotics</span>
+          <div class="topic-title">System reliability &amp; performance evaluation</div>
+          <p class="topic-desc">
+            We assess robotic cells and automated systems under realistic operating
+            conditions — measuring throughput, cycle times, and failure modes to
+            ensure deployments meet reliability and performance targets from day one.
+          </p>
+        </div>
+      </div>
+
+      <div class="topic-card">
+        <div class="topic-photo">
+          <span class="placeholder-label">Photo</span>
+        </div>
+        <div class="topic-body">
+          <span class="topic-tag">Automotive</span>
+          <div class="topic-title">ADAS &amp; Infotainment validation</div>
+          <p class="topic-desc">
+            From sensor fusion to HMI interaction, we cover the full validation
+            stack for ADAS functions and in-vehicle infotainment systems — accelerating
+            certification cycles while maintaining the highest safety standards.
+          </p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <script data-goatcounter="https://cncqit.goatcounter.com/count"
+          async src="//gc.zgo.at/count.js"></script>
+</body>
+</html>
