@@ -1,268 +1,193 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Evento</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet" />
-  <style>
-    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Evento</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:wght@300;400;500&display=swap"
+      rel="stylesheet"
+    />
+      <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <img
+      src="Images/Concept Reply - LOGO_Negative RGB.png"
+      alt="Reply"
+      class="hero-logo logo-top-left"
+      style="position: absolute; top: 2rem; left: 2rem; height: 6rem; z-index: 10;"
+    />
+    <button
+      class="contact-top-right"
+      onclick="window.location.href='mailto:fe.meloni@reply.it;a.magurno@reply.it;s.maragliulo@reply.it;a.tessuti@reply.it?subject=Contatto%20dal%20sito&body=Buongiorno,%20vorrei%20ricevere%20informazioni.'"
+    >
+      Contact
+    </button>
+    <div class="hero">
 
-    :root {
-      --bg: #f4f7f4;
-      --ink: #111c13;
-      --accent: #00a651;
-      --muted: #5a6e5c;
-      --card: #fff;
-      --border: rgba(0,0,0,0.08);
-    }
 
-    body {
-      background: var(--bg);
-      color: var(--ink);
-      font-family: 'DM Sans', sans-serif;
-      min-height: 100vh;
-    }
+    <div class="section">
+      <h2>Our areas of expertise</h2>
 
-    /* ── Hero ── */
-    .hero {
-      max-width: 760px;
-      margin: 0 auto;
-      padding: 4rem 1.5rem 3.5rem;
-    }
-
-    .badge {
-      display: inline-block;
-      background: var(--accent);
-      color: #fff;
-      font-size: 0.68rem;
-      font-weight: 500;
-      letter-spacing: 0.16em;
-      text-transform: uppercase;
-      padding: 0.35rem 1rem;
-      border-radius: 2rem;
-      margin-bottom: 1.75rem;
-    }
-
-    .hero h1 {
-      font-family: 'DM Serif Display', serif;
-      font-size: clamp(2.2rem, 6vw, 3.6rem);
-      line-height: 1.12;
-      margin-bottom: 1.25rem;
-      max-width: 600px;
-    }
-
-    .hero-body {
-      display: grid;
-      grid-template-columns: 1fr auto;
-      align-items: end;
-      gap: 2rem;
-    }
-
-    .hero p {
-      color: var(--muted);
-      font-size: 1rem;
-      line-height: 1.75;
-      max-width: 480px;
-    }
-
-    .info-stack {
-      display: flex;
-      flex-direction: column;
-      gap: 0.5rem;
-      flex-shrink: 0;
-    }
-
-    .info-chip {
-      background: var(--card);
-      border: 1px solid var(--border);
-      border-radius: 2rem;
-      padding: 0.4rem 1rem;
-      font-size: 0.82rem;
-      white-space: nowrap;
-      display: flex;
-      align-items: center;
-      gap: 0.45rem;
-    }
-
-    @media (max-width: 560px) {
-      .hero-body { grid-template-columns: 1fr; }
-      .info-stack { flex-direction: row; flex-wrap: wrap; }
-    }
-
-    /* ── Divider ── */
-    hr {
-      border: none;
-      border-top: 1px solid var(--border);
-    }
-
-    /* ── Topics ── */
-    .section {
-      max-width: 1100px;
-      margin: 0 auto;
-      padding: 3rem 1.5rem 5rem;
-    }
-
-    .section-eyebrow {
-      font-size: 0.68rem;
-      letter-spacing: 0.18em;
-      text-transform: uppercase;
-      color: var(--accent);
-      margin-bottom: 0.5rem;
-    }
-
-    .section h2 {
-      font-family: 'DM Serif Display', serif;
-      font-size: clamp(1.6rem, 4vw, 2.2rem);
-      margin-bottom: 2.5rem;
-    }
-
-    .topics-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(45%, 1fr));
-      gap: 1.25rem;
-    }
-
-    .topic-card {
-      background: var(--card);
-      border: 1px solid var(--border);
-      border-radius: 1.25rem;
-      overflow: hidden;
-      display: flex;
-      flex-direction: column;
-    }
-
-    .topic-photo {
-      width: 100%;
-      aspect-ratio: 16 / 9;
-      background: #ddeedd;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      overflow: hidden;
-      position: relative;
-    }
-
-    .topic-photo img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      display: block;
-    }
-
-    .topic-photo .placeholder-label {
-      font-size: 0.68rem;
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
-      color: var(--muted);
-    }
-
-    .topic-body {
-      padding: 1.5rem 1.5rem 1.75rem;
-      flex: 1;
-      display: flex;
-      flex-direction: column;
-      gap: 0.5rem;
-    }
-
-    .topic-tag {
-      font-size: 0.65rem;
-      letter-spacing: 0.14em;
-      text-transform: uppercase;
-      color: var(--accent);
-      font-weight: 500;
-    }
-
-    .topic-title {
-      font-family: 'DM Serif Display', serif;
-      font-size: 1.2rem;
-      line-height: 1.25;
-      color: var(--ink);
-    }
-
-    .topic-desc {
-      font-size: 0.875rem;
-      color: var(--muted);
-      line-height: 1.7;
-      margin-top: 0.35rem;
-    }
-  </style>
-</head>
-<body>
-
-  <!-- ── HERO ─────────────────────────────────────────────────── -->
-  <div class="hero">
-    <img src="reply-logo.png" alt="Reply" style="height: 48px; margin-bottom: 2rem; display: block;" />
-    <h1>What we do</h1>
-  </div>
-
-  <hr />
-
-  <!-- ── TOPICS ─────────────────────────────────────────────────── -->
-  <div class="section">
-    <p class="section-eyebrow">What we do</p>
-    <h2>Our areas of expertise</h2>
-
-    <div class="topics-grid">
-
-      <div class="topic-card">
-        <div class="topic-photo">
-          <!-- PERSONALIZZA: sostituisci con <img src="foto.jpg" alt="..."> -->
-          <span class="placeholder-label">Photo</span>
+      <div class="topics-grid">
+        <div class="topic-card">
+          <div class="topic-photo">
+            <img
+              src="Images/Logistics & Manufacturing.png"
+              alt="Logistics & Manufacturing"
+              class="topic-img"
+            />
+          </div>
+          <div class="topic-body">
+            <span class="topic-tag">Logistics &amp; Manufacturing</span>
+            <div class="topic-title">
+              End to end flows &amp; virtual commissioning test
+            </div>
+            <p class="topic-desc">
+              From warehouse orchestration to factory floor validation, we
+              ensure every workflow performs exactly as designed before it
+              reaches production. Our QA and automation expertise helps
+              organizations validate end-to-end logistics operations,
+              manufacturing execution systems, and supply chain integrations
+              with precision and speed. By combining intelligent test
+              automation, process simulation, and real-world scenario
+              validation, we uncover failures before they disrupt operations. We
+              focus on reliability, scalability, and operational continuity
+              across every touchpoint — from inbound inventory to outbound
+              delivery. Whether validating ERP integrations, automated
+              production lines, or complex distribution networks, our approach
+              reduces downtime, accelerates deployment confidence, and improves
+              overall system resilience. We do not simply test software; we
+              validate operational performance under real business conditions.
+              Every solution is engineered to help manufacturers and logistics
+              providers achieve faster releases, predictable quality, and
+              measurable operational excellence while maintaining the highest
+              standards of system reliability and customer satisfaction.
+            </p>
+          </div>
         </div>
-        <div class="topic-body">
-          <span class="topic-tag">Logistics &amp; Manufacturing</span>
-          <div class="topic-title">End to end flows &amp; virtual commissioning test</div>
-          <p class="topic-desc">
-            From warehouse orchestration to factory floor validation, we ensure every workflow performs exactly as designed before it reaches production. Our QA and automation expertise helps organizations validate end-to-end logistics operations, manufacturing execution systems, and supply chain integrations with precision and speed. By combining intelligent test automation, process simulation, and real-world scenario validation, we uncover failures before they disrupt operations. We focus on reliability, scalability, and operational continuity across every touchpoint — from inbound inventory to outbound delivery. Whether validating ERP integrations, automated production lines, or complex distribution networks, our approach reduces downtime, accelerates deployment confidence, and improves overall system resilience. We do not simply test software; we validate operational performance under real business conditions. Every solution is engineered to help manufacturers and logistics providers achieve faster releases, predictable quality, and measurable operational excellence while maintaining the highest standards of system reliability and customer satisfaction.
-          </p>
+
+        <div class="topic-card">
+          <div class="topic-photo">
+            <img
+              src="Images/Simulation.png"
+              alt="Simulation"
+              class="topic-img"
+            />
+          </div>
+          <div class="topic-body">
+            <span class="topic-tag">Simulation</span>
+            <div class="topic-title">
+              Digital twin for model &amp; scenario verification
+            </div>
+            <p class="topic-desc">
+              We use advanced digital twin and scenario-based validation to
+              simulate real operational conditions before systems are deployed
+              into live environments. Our simulation-driven QA approach enables
+              businesses to validate complex workflows, automation logic, and
+              system behaviors with accuracy and confidence. By replicating
+              real-world conditions, edge cases, and high-load scenarios, we
+              identify hidden risks long before they become production issues.
+              This allows organizations to optimize performance, improve
+              reliability, and reduce costly downtime. Our expertise spans
+              industrial systems, connected platforms, intelligent automation,
+              and integrated enterprise environments where precision and
+              predictability are critical. Through automated validation
+              pipelines and continuous testing strategies, we transform
+              simulation environments into powerful quality assurance
+              ecosystems. Every scenario is designed to ensure systems behave
+              consistently, securely, and efficiently under pressure. The result
+              is faster innovation, safer deployments, and greater operational
+              confidence. We help businesses move from reactive problem-solving
+              to proactive quality engineering powered by intelligent simulation
+              and validation expertise.
+            </p>
+          </div>
+        </div>
+
+        <div class="topic-card">
+          <div class="topic-photo">
+            <img
+              src="Images/Robotics.png"
+              alt="Robotics"
+              class="topic-img"
+            />
+          </div>
+          <div class="topic-body">
+            <span class="topic-tag">Robotics</span>
+            <div class="topic-title">
+              System reliability &amp; performance evaluation
+            </div>
+            <p class="topic-desc">
+              Modern robotic systems demand absolute reliability, precision, and
+              performance. Our QA and validation expertise ensures robotic
+              platforms operate safely and consistently across real-world
+              conditions. We specialize in automated testing frameworks, system
+              validation, performance evaluation, and reliability engineering
+              for robotic ecosystems where hardware, software, and intelligent
+              automation converge. From autonomous workflows to industrial
+              robotics integration, we validate system interactions,
+              communication layers, and operational stability at every stage of
+              development. Our testing methodologies are designed to uncover
+              vulnerabilities, performance bottlenecks, and synchronization
+              issues before deployment. By combining simulation-driven
+              verification with advanced automation strategies, we help
+              organizations accelerate innovation without compromising quality
+              or safety. Every robotic environment is tested against demanding
+              operational scenarios to ensure predictable performance and
+              long-term reliability. We focus on creating resilient systems
+              capable of performing under pressure, adapting to changing
+              conditions, and delivering consistent operational value. Our
+              mission is to ensure robotics systems perform flawlessly before
+              customers ever experience them.
+            </p>
+          </div>
+        </div>
+
+        <div class="topic-card">
+          <div class="topic-photo">
+            <img
+              src="Images/Automotive.png"
+              alt="Automotive"
+              class="topic-img"
+            />
+          </div>
+          <div class="topic-body">
+            <span class="topic-tag">Automotive</span>
+            <div class="topic-title">ADAS &amp; Infotainment validation</div>
+            <p class="topic-desc">
+              Automotive systems require uncompromising quality, reliability,
+              and safety across every connected experience. We deliver
+              specialized QA, validation, and test automation solutions for
+              modern automotive technologies including ADAS, infotainment,
+              connectivity platforms, and intelligent vehicle ecosystems. Our
+              approach focuses on validating performance under real-world
+              driving scenarios, ensuring systems behave accurately,
+              consistently, and securely across diverse operating conditions.
+              Through automated testing, simulation environments, and
+              scenario-based verification, we identify defects early and reduce
+              development risk throughout the product lifecycle. We help
+              automotive innovators accelerate deployment while maintaining the
+              highest standards of compliance, stability, and user experience.
+              From sensor validation to infotainment responsiveness and system
+              integration testing, every solution is engineered for precision
+              and reliability. Our expertise enables manufacturers and
+              technology providers to release with confidence, improve product
+              quality, and minimize costly failures in production environments.
+              We ensure automotive systems are thoroughly tested, validated, and
+              prepared for the complexity of next-generation mobility
+            </p>
+          </div>
         </div>
       </div>
-
-      <div class="topic-card">
-        <div class="topic-photo">
-          <span class="placeholder-label">Photo</span>
-        </div>
-        <div class="topic-body">
-          <span class="topic-tag">Simulation</span>
-          <div class="topic-title">Digital twin for model &amp; scenario verification</div>
-          <p class="topic-desc">
-            We use advanced digital twin and scenario-based validation to simulate real operational conditions before systems are deployed into live environments. Our simulation-driven QA approach enables businesses to validate complex workflows, automation logic, and system behaviors with accuracy and confidence. By replicating real-world conditions, edge cases, and high-load scenarios, we identify hidden risks long before they become production issues. This allows organizations to optimize performance, improve reliability, and reduce costly downtime. Our expertise spans industrial systems, connected platforms, intelligent automation, and integrated enterprise environments where precision and predictability are critical. Through automated validation pipelines and continuous testing strategies, we transform simulation environments into powerful quality assurance ecosystems. Every scenario is designed to ensure systems behave consistently, securely, and efficiently under pressure. The result is faster innovation, safer deployments, and greater operational confidence. We help businesses move from reactive problem-solving to proactive quality engineering powered by intelligent simulation and validation expertise.
-          </p>
-        </div>
-      </div>
-
-      <div class="topic-card">
-        <div class="topic-photo">
-          <span class="placeholder-label">Photo</span>
-        </div>
-        <div class="topic-body">
-          <span class="topic-tag">Robotics</span>
-          <div class="topic-title">System reliability &amp; performance evaluation</div>
-          <p class="topic-desc">
-            Modern robotic systems demand absolute reliability, precision, and performance. Our QA and validation expertise ensures robotic platforms operate safely and consistently across real-world conditions. We specialize in automated testing frameworks, system validation, performance evaluation, and reliability engineering for robotic ecosystems where hardware, software, and intelligent automation converge. From autonomous workflows to industrial robotics integration, we validate system interactions, communication layers, and operational stability at every stage of development. Our testing methodologies are designed to uncover vulnerabilities, performance bottlenecks, and synchronization issues before deployment. By combining simulation-driven verification with advanced automation strategies, we help organizations accelerate innovation without compromising quality or safety. Every robotic environment is tested against demanding operational scenarios to ensure predictable performance and long-term reliability. We focus on creating resilient systems capable of performing under pressure, adapting to changing conditions, and delivering consistent operational value. Our mission is to ensure robotics systems perform flawlessly before customers ever experience them.
-          </p>
-        </div>
-      </div>
-
-      <div class="topic-card">
-        <div class="topic-photo">
-          <span class="placeholder-label">Photo</span>
-        </div>
-        <div class="topic-body">
-          <span class="topic-tag">Automotive</span>
-          <div class="topic-title">ADAS &amp; Infotainment validation</div>
-          <p class="topic-desc">
-            Automotive systems require uncompromising quality, reliability, and safety across every connected experience. We deliver specialized QA, validation, and test automation solutions for modern automotive technologies including ADAS, infotainment, connectivity platforms, and intelligent vehicle ecosystems. Our approach focuses on validating performance under real-world driving scenarios, ensuring systems behave accurately, consistently, and securely across diverse operating conditions. Through automated testing, simulation environments, and scenario-based verification, we identify defects early and reduce development risk throughout the product lifecycle. We help automotive innovators accelerate deployment while maintaining the highest standards of compliance, stability, and user experience. From sensor validation to infotainment responsiveness and system integration testing, every solution is engineered for precision and reliability. Our expertise enables manufacturers and technology providers to release with confidence, improve product quality, and minimize costly failures in production environments. We ensure automotive systems are thoroughly tested, validated, and prepared for the complexity of next-generation mobility
-          </p>
-        </div>
-      </div>
-
     </div>
-  </div>
 
-  <script data-goatcounter="https://cncqit.goatcounter.com/count"
-          async src="//gc.zgo.at/count.js"></script>
-</body>
+    <script
+      data-goatcounter="https://cncqit.goatcounter.com/count"
+      async
+      src="//gc.zgo.at/count.js"
+    ></script>
+  </body>
 </html>
